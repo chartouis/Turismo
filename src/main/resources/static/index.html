@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/index-62dfda65d5ea53f355fa4d97fa9bd6fd8a2271afde56df05431b3fdba8914cf5.css" />
+<style>
+    /* Add basic button styling */
+    #iy6th {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease; /* Smooth transition for color change */
+    }
+
+    /* Button darker on hover */
+    #iy6th:hover {
+      background-color: #555555; /* Darker shade */
+    }
+
+    /* Button even darker when clicked */
+    #iy6th:active {
+      background-color: #333333; /* Even darker shade */
+    }
+  </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Select the button and input field
+    const button = document.getElementById('iy6th');
+    const inputField = document.getElementById('iwq5f');
+    const outField = document.getElementById('i926f');
+
+    // Function to send the POST request
+    button.addEventListener('click', function() {
+      const inputValue = inputField.value.trim();
+
+      // Check if there's text in the input field
+      if (inputValue.length > 0) {
+        // Prepare the POST request
+        const data = {
+          text: inputValue, // send the text as a key-value pair
+        };
+
+        fetch('http://localhost:8080/api/chat', {  // Replace with your API endpoint URL
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),  // Convert the data to JSON
+        })
+        .then(response => response.text())  // Handle response as plain text
+        .then(responseText => {
+          console.log('Success:', responseText);
+          outField.value = responseText; // Display response in the output textarea
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          outField.value = 'An error occurred while processing your request.'; // Error feedback
+        });
+
+        // Clear the input field after the request is sent
+        inputField.value = '';
+      } else {
+        alert('Please enter some text!');
+      }
+    });
+  });
+</script>
+
+
+
+
+
+<link href="https://fonts.googleapis.com" rel="preconnect" ><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin ></head>
+<body id="imii"><div id="inh1"><img id="iodg" src="/assets/TURISMO.png"/><div id="iaz9f"></div><div id="ixck" title="made by Ernazar">Made by Ernazar</div></div><div id="iqyv"><textarea id="i926f"></textarea><div id="inqop"><div id="iposw"><textarea id="iwq5f"></textarea></div><button type="button" id="iy6th"></button></div></div></body>
+</html>
